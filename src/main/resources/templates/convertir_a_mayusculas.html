@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Propósito de la aplicación</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <img th:src="@{/img/compras.jpg}" width="350">
+    <h3 class="display-3">Propósito de la aplicación</h3>
+    <h4 th:text="${#strings.toUpperCase(mensaje)}"></h4>
+    <p style="font-weight: bold" th:text="${nombre}"></p>
+    <ul>
+        <li th:text="${#strings.substring(nombre, 0, 1)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 2)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 3)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 4)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 5)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 6)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 7)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 8)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 9)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 10)}"></li>
+        <li th:text="${#strings.substring(nombre, 0, 11)}"></li>
+    </ul>
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
