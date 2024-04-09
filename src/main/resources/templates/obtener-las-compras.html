@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de compras</title>
+</head>
+<body>
+<h1>Lista de compras</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Género</th>
+        <th>Ciudad</th>
+        <th>Frecuencia</th>
+        <th>Artículo</th>
+        <th>Gasto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="compra: ${listaCompras}">
+
+        <td>
+            <img th:src="@{${compra.genero == 'Male' ? '/img/hombre.jpg' : '/img/mujer.png'}}"
+                 width="350">
+        </td>
+        <td th:text="${compra.nombre}"></td>
+        <td th:text="${compra.genero}"></td>
+        <td th:text="${compra.ciudad}"></td>
+        <td th:text="${compra.frecuencia}"></td>
+        <td th:text="${compra.articulo}"></td>
+        <td th:text="${compra.gasto}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
