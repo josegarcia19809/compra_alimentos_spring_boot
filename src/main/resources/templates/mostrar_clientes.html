@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clientes</title>
+    <link th:href="@{/css/grades-stylesheet.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/mostrar-clientes}" class="active">Mostrar clientes</a>
+</div>
+
+<div class="container">
+    <h2>Clientes</h2>
+    <table id="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Ciudad</th>
+            <th>Frecuencia</th>
+            <th>Artículo</th>
+            <th>Gasto</th>
+        </tr>
+        <tr>
+            <td>Rachel</td>
+            <td>Male</td>
+            <td>Philadelphia</td>
+            <td>Seldom</td>
+            <td>Sushi</td>
+            <td>71.68</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
