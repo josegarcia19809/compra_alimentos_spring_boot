@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +47,37 @@ public class HomeController {
     }
 
     @GetMapping("/registrar-compra")
-    public String registrarCompra(Model model) {
-        model.addAttribute("compra", new CompraComida());
+    public String registrarCompra(Model model,
+                                  @RequestParam(required = false) String id) {
+        CompraComida compra;
+        int index = obtenerIndexCompra(id);
+        if (index == -1) { // Nueva compra
+            compra = new CompraComida();
+        } else { // Actualizar compra
+            compra = listaCompras.get(index);
+        }
+        model.addAttribute("compra", compra);
         return "form_registrar_compra";
     }
 
     @PostMapping("/guardarCompra")
     public String guardarCompra(CompraComida compra) {
-        System.out.println(compra);
-        listaCompras.add(compra);
+        int index = obtenerIndexCompra(compra.getId());
+        if (index == -1) { // Nueva compra
+            listaCompras.add(compra);
+        } else { // Actualizar compra
+            listaCompras.set(index, compra);
+        }
         return "redirect:/obtener-compras";
+    }
+
+    private Integer obtenerIndexCompra(String id) {
+        for (int i = 0; i < listaCompras.size(); i++) {
+            if (listaCompras.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1; // No encontrado
     }
 
 }
