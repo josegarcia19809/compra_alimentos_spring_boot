@@ -1,9 +1,12 @@
 package com.example.compra_alimentos.Controller;
 
 import com.example.compra_alimentos.model.CompraComida;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -61,7 +64,11 @@ public class HomeController {
     }
 
     @PostMapping("/guardarCompra")
-    public String guardarCompra(CompraComida compra) {
+    public String guardarCompra(@Valid @ModelAttribute("compra") CompraComida compra,
+                                BindingResult result) {
+        if (result.hasErrors()) {
+            return "form_registrar_compra";
+        }
         int index = obtenerIndexCompra(compra.getId());
         if (index == -1) { // Nueva compra
             listaCompras.add(compra);

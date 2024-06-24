@@ -1,9 +1,14 @@
 package com.example.compra_alimentos.model;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.UUID;
 
+
 public class CompraComida {
+    @NotBlank(message = "El nombre no debe estar vacío")
     private String nombre;
+    @NotBlank(message = "El género no debe estar vacío")
     private String genero;
     private String ciudad;
     private String frecuencia;
