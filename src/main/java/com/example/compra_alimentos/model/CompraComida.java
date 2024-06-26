@@ -1,5 +1,6 @@
 package com.example.compra_alimentos.model;
 
+import com.example.compra_alimentos.Controller.Articulo;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
@@ -12,6 +13,7 @@ public class CompraComida {
     private String genero;
     private String ciudad;
     private String frecuencia;
+    @Articulo(message = "Articulo debe ser Tacos, Tortas o Quesadillas")
     private String articulo;
     private double gasto;
     private String id;

@@ -35,6 +35,8 @@
             <div class="form-group">
                 <label for="articulo" class="form-label">Artículo</label>
                 <input type="text" class="form-control" id="articulo" th:field="*{articulo}">
+                <p class="alert alert-danger"
+                   th:if="${#fields.hasErrors('articulo')}" th:errors="*{articulo}"></p>
             </div>
             <div class="form-group  mb-3">
                 <label for="gasto" class="form-label">Gasto</label>
